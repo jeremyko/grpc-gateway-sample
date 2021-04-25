@@ -8,5 +8,3 @@ require (
 	google.golang.org/grpc v1.37.0
 	google.golang.org/protobuf v1.26.0
 )
-
-replace github.com/jeremyko/my_grpc_module/proto/helloworld => ./proto/helloworld
