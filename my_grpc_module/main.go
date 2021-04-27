@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"log"
 	"net"
 	"net/http"
+
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 
 	"google.golang.org/grpc"
 
@@ -21,7 +22,11 @@ func NewServer() *server {
 }
 
 func (s *server) SayHello(ctx context.Context, in *helloworldpb.HelloRequest) (*helloworldpb.HelloReply, error) {
-	return &helloworldpb.HelloReply{Message: in.Name + " world"}, nil
+	p := &helloworldpb.HelloReply{}
+	p.Messages = append(p.Messages, in.Name+" world 1")
+	p.Messages = append(p.Messages, in.Name+" world 2")
+	return p, nil
+	//return &helloworldpb.HelloReply{Message: in.Name + " world"}, nil
 }
 
 func main() {
